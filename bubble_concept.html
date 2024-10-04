@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       
+            color: #333;
+            margin: 0;
+            padding: 0;
+            /*background-image: url('C:/Users/HP/Downloads/s0_bg.jpg');*/
+	    background-color : #1c2e4a;
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the background image */
+            background-attachment: fixed; /* Keeps the background image fixed when scrolling */
+        }
+        .container {
+            max-width: 800px;
+            margin: 80px auto 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        ul, ol {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .grey-block {
+            background: #d3d3d3;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .black-block {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-color: white;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar-links li {
+            display: inline;
+        }
+        .navbar-links a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .navbar-links a:hover {
+            background-color: #575757;
+            color: black;
+        }
+    
+       /* .content {
+            margin-left: 220px; /* Adjust based on side panel width */
+            padding: 20px;
+        }*/
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    /*<div class="content">*/
+        <div class="container">
+            <h1>Bubble Sort</h1>
+            <ul>
+                <li>Comparison-Based Algorithm: Bubble Sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.</li>
+                <li>Inefficient for Large Datasets: It has a poor average and worst-case time complexity of <code>O(n^2)</code>, making it unsuitable for large datasets.</li>
+                <li>Stable Sorting: Bubble Sort is stable, meaning it preserves the relative order of equal elements.</li>
+                <li>Simple and Easy to Implement: Despite its inefficiency for large datasets, Bubble Sort is straightforward and often used for educational purposes.</li>
+                <li>Named for "Bubbling" Effect: The algorithm's name comes from the way larger elements "bubble" to the top of the list with each pass.</li>
+            </ul>        
+            <div class="grey-block">
+                <h2>How Bubble Sort Works</h2>
+                <ol>
+                    <li>Start at the Beginning: Begin at the start of the list.</li>
+                    <li>Compare Adjacent Elements: Compare the first two elements.</li>
+                    <li>Swap if Necessary: If the first element is greater than the second, swap them.</li>
+                    <li>Move to the Next Pair: Move to the next pair of elements and repeat the comparison and swap process.</li>
+                    <li>Repeat: Continue this process until the end of the list is reached. At this point, the largest element will have "bubbled" to the end of the list.</li>
+                    <li>Iterate: Repeat the entire process for the remaining elements (excluding the last element which is now sorted) until no more swaps are needed.</li>
+                </ol>
+            </div>
+            <div class="image">
+                <img src="C:/Users/HP/Downloads/bs_img.jpeg" alt="Bubble Sort Example">
+            </div>
+            <div class="card">
+                <h2>Time Complexity</h2>
+                <ul>
+                    <li>Worst Case: <code>O(n^2)</code></li>
+                    <li>Average Case: <code>O(n^2)</code></li>
+                    <li>Best Case: <code>O(n)</code></li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Space Complexity</h2>
+                <p><code>O(1)</code> - Bubble sort is an in-place sorting algorithm.</p>
+            </div>
+            <div class="card">
+                <h2>Advantages</h2>
+                <ul>
+                    <li>Simple to understand and implement.</li>
+                    <li>Stable sorting algorithm.</li>
+                    <li>Requires only a constant amount of additional memory space.</li>
+                    <li>Effective for small data sets or nearly sorted lists.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Disadvantages</h2>
+                <ul>
+                    <li>Inefficient for large data sets due to its <code>O(n^2)</code> time complexity.</li>
+                    <li>Slower compared to more advanced algorithms like quicksort and mergesort.</li>
+                    <li>Makes many unnecessary comparisons even after the list is sorted.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>Applications</h2>
+                <ul>
+                    <li>Educational purposes</li>
+                    <li>Small datasets</li>
+                    <li>Partially sorted arrays</li>
+                    <li>Check if the array is sorted</li>
+                    <li>Embedded systems</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
