@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1c2e4a;
+            font-size: 1.5rem;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 100px auto 0 auto;
+            width: 70%;
+            min-width: 360px;
+            padding: 20px;
+        }
+        .container h2,
+        .container h3 {
+            color: white;
+        }
+        .array-input-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .array-input {
+            display: block;
+            height: 50px;
+            box-sizing: border-box;
+            outline: none;
+            width: 600px;
+            max-width: 100%;
+            padding-left: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            font: inherit;
+            margin-bottom: 10px;
+        }
+        .submit-array, .stop-array, .restart-array {
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            background-color: green;
+            font: inherit;
+            width: 200px;
+            max-width: 100%;
+            margin: 5px;
+        }
+        .stop-array {
+            background-color: red;
+        }
+        .restart-array {
+            background-color: blue;
+        }
+        .submit-array:hover, .stop-array:hover, .restart-array:hover {
+            background-color: #06585e;
+            transform: scale(1.02);
+        }
+        .array-input:focus {
+            border: 1px solid #09a0aa;
+            box-shadow: 0 0 5px #09a0aa;
+        }
+        .input-error {
+            color: red;
+        }
+        .array {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .array-element {
+            position: relative; /* Added for label positioning */
+            box-sizing: border-box;
+            height: 50px;
+            padding: 10px;
+            border: 1px white;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.5s ease-in-out;
+	    background-color: white;
+            color: black;
+        }
+        .label {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 2px 5px;
+            border: 1px solid black;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+        .array-element.swapped {
+            border-color: red;
+            box-shadow: 0 0 7px red;
+            transform: translateY(20px); /* Move down 50px while swapping */
+            transition: transform 1.5s ease-in-out;
+        }
+        .array-element.compared {
+            border-color: yellow;
+            box-shadow: 0 0 7px yellow;
+        }
+	.array-element.sorted {
+            background-color: #32CD32;
+            color: white;
+        }
+        .comparing {
+            color: yellow;
+        }
+        .swapping {
+            color: red;
+        }
+	.sorted-status {
+            color: #32CD32;
+        }
+        .side-panel {
+            width: 20%;
+            min-width: 200px;
+            background-color: beige;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 150vh;
+            box-sizing: border-box;
+            margin-top: 50px;
+        }
+        .side-panel a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2rem;
+        }
+        .navbar {
+            width: 100%;
+            background-color: white;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar-links li {
+            display: inline;
+        }
+        .navbar-links a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        .navbar-links a:hover {
+            background-color: #575757;
+            color: black;
+        }
+        .message-box {
+            background-color: #FBCEB1;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            color: black;
+            max-width: 300px; /* Adjusted max-width */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="side-panel">
+        <h2>CONTENTS</h2>
+        <h4>Concepts</h4>
+        <ul>
+            <li><a href="bubble_concept.html">Bubble Sort</a></li>
+            <li><a href="selection_concept.html">Selection Sort</a></li>
+            <li><a href="insertion_concept.html">Quick Sort</a></li>
+        </ul>
+        <h4>Algorithm</h4>
+        <ul>
+            <li><a href="bubble_alg.html">Bubble Sort</a></li>
+            <li><a href="selection_alg.html">Selection Sort</a></li>
+            <li><a href="quick_alg.html">Quick Sort</a></li>
+        </ul>
+        <h4>Demo</h4>
+        <ul>
+            <li><a href="bubble.html">Bubble Sort</a></li>
+            <li><a href="selection.html">Selection Sort</a></li>
+            <li><a href="quick.html">Quick Sort</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <nav class="navbar">
+            <ul class="navbar-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <h2>Bubble Sort Simulator</h2>
+        <h3>Array Input</h3>
+        <input class="array-input" id="array-input" placeholder="Enter numbers, separated by spaces...">
+        <button class="submit-array" id="submit-array">Sort</button>
+        <button class="stop-array" id="stop-array">Stop</button>
+        <button class="restart-array" id="restart-array">Restart</button>
+        <div class="input-error" id="input-error"></div>
+        <h3>Array Output</h3>
+        <div class="array" id="array"></div>
+        <div class="status" id="status"></div>
+        <div class="message-box" id="message-box"></div> <!-- Added message box -->
+    </div>
+    <script>
+        let stopSorting = false; // Flag to control the stopping of sorting process
+
+        const sleep = async (ms) => {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        const parseArrayInput = (inputStr) => {
+            const tokens = inputStr.trim().split(/\s+/);
+            const array = tokens.map(elem => parseFloat(elem));
+            if (array.length !== tokens.length || array.some(elem => isNaN(elem)))
+                return null;
+            return array;
+        }
+
+        const insertArrayToHtml = (array) => {
+            const html = '<div class="array-element">' +
+                array.join('</div><div class="array-element">') +
+                '</div>';
+            document.getElementById('array').innerHTML = html;
+        }
+
+        const highlightElements = (i, j, additionalClass) => {
+            const array = document.getElementById('array').children;
+            array[i].classList.add(additionalClass);
+            array[j].classList.add(additionalClass);
+
+            // Remove the transform after a delay to move back up
+            setTimeout(() => {
+                array[i].style.transform = 'none';
+                array[j].style.transform = 'none';
+            }, 500); // 500ms delay, matching the transition duration
+        }
+
+        const setStatus = (status) => {
+            const statusElem = document.getElementById('status');
+            statusElem.innerHTML = status === 'comparing' ? 'Comparing...' : 'Swapping...';
+            statusElem.className = status;
+        }
+
+        const setMessage = (i, j, array) => {
+            const messageElem = document.getElementById('message-box');
+            messageElem.innerHTML = `j = ${array[j]} and j+1 = ${array[j + 1]} .<br> ${array[j]} and ${array[j + 1]} are swapping`;
+        }
+
+        const bubbleSort = async () => {
+            stopSorting = false;
+            const array = parseArrayInput(document.getElementById('array-input').value);
+            if (!array) {
+                document.getElementById('input-error').innerHTML = 'Incorrect input!';
+                return;
+            }
+            document.getElementById('input-error').innerHTML = '';
+            const n = array.length;
+            for (let i = n - 1; i > 0; i--) {
+                for (let j = 0; j < i; j++) {
+                    if (stopSorting) return; // Check if sorting should be stopped
+                    insertArrayToHtml(array);
+                    highlightElements(j, j + 1, 'compared');
+                    setStatus('comparing');
+                    await sleep(1000);
+                    if (array[j] > array[j + 1]) {
+                        setMessage(j, j + 1, array);
+                        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                        insertArrayToHtml(array);
+                        highlightElements(j, j + 1, 'swapped');
+                        setStatus('swapping');
+                        await sleep(1000);
+                    }
+                }
+            }
+             insertArrayToHtml(array);
+            document.getElementById('status').innerHTML = 'Sorted';
+            document.getElementById('status').className = 'sorted-status';
+            document.getElementById('message-box').innerHTML = ''; // Clear message box after sorting completes
+            
+            // Apply the 'sorted' class to all elements
+            const arrayElements = document.getElementById('array').children;
+            for (let elem of arrayElements) {
+                elem.classList.add('sorted');
+            }
+        }
+
+        const stopSort = () => {
+            stopSorting = true; // Set flag to true to stop sorting
+        }
+
+        const restartSort = () => {
+            document.getElementById('array-input').value = ''; // Clear input
+            document.getElementById('array').innerHTML = ''; // Clear array display
+            document.getElementById('status').innerHTML = ''; // Clear status
+            document.getElementById('input-error').innerHTML = ''; // Clear error message
+            document.getElementById('message-box').innerHTML = ''; // Clear message box
+        }
+
+        document.getElementById('submit-array').addEventListener('click', bubbleSort);
+        document.getElementById('stop-array').addEventListener('click', stopSort);
+        document.getElementById('restart-array').addEventListener('click', restartSort);
+    </script>
+</body>
+</html>
